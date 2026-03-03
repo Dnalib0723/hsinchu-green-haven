@@ -58,7 +58,7 @@ const DashboardSection = () => {
             ))}
           </div>
           <p className="text-center text-xs text-primary-foreground/40 mt-6">
-            各行政區參與度即時分析（示範資料）
+            各行政區人員參與度即時分析（示範資料）
           </p>
         </div>
       </div>
