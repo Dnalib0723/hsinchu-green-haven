@@ -1,4 +1,4 @@
-import { Users, School, TreePine, Heart, Building2 } from "lucide-react";
+import { Users, School, TreePine, HandHeart, Building2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface AudienceItem {
@@ -12,7 +12,7 @@ const audiences: AudienceItem[] = [
   { icon: Users, label: "一般民眾", sub: "親子 / 休閒", color: "bg-sky-light text-sky" },
   { icon: School, label: "教師學校", sub: "備課 / 預約", color: "bg-wood-warm text-secondary-foreground" },
   { icon: TreePine, label: "場域機構", sub: "內容 / 數據", color: "bg-muted text-primary" },
-  { icon: Heart, label: "志工社區", sub: "招募 / 時數", color: "bg-sky-light text-accent" },
+  { icon: HandHeart, label: "志工社區", sub: "招募 / 時數", color: "bg-sky-light text-accent" },
   { icon: Building2, label: "企業機關", sub: "ESG / 辦公", color: "bg-secondary text-secondary-foreground" },
 ];
 

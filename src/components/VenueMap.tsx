@@ -1,12 +1,23 @@
 import { MapPin } from "lucide-react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+
+// 修正 Leaflet 預設 icon 路徑問題
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+});
 
 const venues = [
-  { name: "新竹縣自然谷環境信託", district: "芎林鄉", type: "森林生態" },
-  { name: "金漢柿餅文化園區", district: "新埔鎮", type: "農業文化" },
-  { name: "綠世界生態農場", district: "北埔鄉", type: "生態教育" },
-  { name: "內灣老街生態步道", district: "橫山鄉", type: "步道導覽" },
-  { name: "新豐紅樹林生態區", district: "新豐鄉", type: "濕地生態" },
-  { name: "頭前溪生態教育園區", district: "竹北市", type: "河川生態" },
+  { name: "新竹縣自然谷環境信託", district: "芎林鄉", type: "森林生態", lat: 24.7432, lng: 121.0891 },
+  { name: "金漢柿餅文化園區", district: "新埔鎮", type: "農業文化", lat: 24.8378, lng: 121.0823 },
+  { name: "綠世界生態農場", district: "北埔鄉", type: "生態教育", lat: 24.6952, lng: 121.0612 },
+  { name: "內灣老街生態步道", district: "橫山鄉", type: "步道導覽", lat: 24.7601, lng: 121.1523 },
+  { name: "新豐紅樹林生態區", district: "新豐鄉", type: "濕地生態", lat: 24.9321, lng: 121.0234 },
+  { name: "頭前溪生態教育園區", district: "竹北市", type: "河川生態", lat: 24.8393, lng: 121.0045 },
 ];
 
 const VenueMap = () => {
@@ -17,15 +28,31 @@ const VenueMap = () => {
         <p className="text-muted-foreground mt-1">探索新竹縣優質環境教育場所</p>
       </div>
       <div className="grid md:grid-cols-2 gap-6">
-        {/* Map placeholder */}
-        <div className="bg-muted rounded-2xl p-8 flex items-center justify-center min-h-[320px] border border-border">
-          <div className="text-center text-muted-foreground">
-            <MapPin size={48} className="mx-auto mb-4 text-primary opacity-50" />
-            <p className="font-medium text-foreground">互動式地圖</p>
-            <p className="text-sm mt-1">整合 56 處認證環教場域</p>
-          </div>
+        {/* 真實地圖 */}
+        <div className="rounded-2xl overflow-hidden border border-border min-h-[320px]">
+          <MapContainer
+            center={[24.78, 121.05]}
+            zoom={11}
+            style={{ height: "100%", minHeight: "320px", width: "100%" }}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {venues.map((v) => (
+              <Marker key={v.name} position={[v.lat, v.lng]}>
+                <Popup>
+                  <div className="text-sm">
+                    <div className="font-bold">{v.name}</div>
+                    <div className="text-gray-500">{v.district}・{v.type}</div>
+                  </div>
+                </Popup>
+              </Marker>
+            ))}
+          </MapContainer>
         </div>
-        {/* Venue list */}
+
+        {/* 場域列表 */}
         <div className="space-y-3">
           {venues.map((v) => (
             <div
