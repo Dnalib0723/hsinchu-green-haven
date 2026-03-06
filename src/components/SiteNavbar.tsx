@@ -4,7 +4,8 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { label: "活動報名", href: "#activities" },
   { label: "教材資源", href: "#resources" },
-  { label: "場域與志工", href: "#venues" },
+  { label: "場域地圖", href: "#venues" },
+  { label: "人才資源", href: "/talents" },
   { label: "案例分享", href: "#cases" },
   { label: "法規資訊", href: "#regulations" },
 ];
