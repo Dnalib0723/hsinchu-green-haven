@@ -9,6 +9,7 @@ interface Activity {
   date: string;
   status: "open" | "full";
   formUrl?: string;
+  feedbackUrl?: string;
 }
 
 const activities: Activity[] = [
@@ -19,6 +20,7 @@ const activities: Activity[] = [
     date: "2026年3月19日(星期四) 13:30-16:30",
     status: "open",
     formUrl: "https://forms.gle/1WTHrotRTBCn5aHX7",
+    feedbackUrl: "#",
   },
   {
     image: activity2,
@@ -27,6 +29,7 @@ const activities: Activity[] = [
     date: "2026年3月24日(星期二) 13:30-16:30",
     status: "open",
     formUrl: "https://forms.gle/x56jJGjBpBTbtumP9",
+    feedbackUrl: "#",
   },
   {
     image: activity3,
@@ -34,6 +37,7 @@ const activities: Activity[] = [
     location: "九芎湖環境教育園區",
     date: "2026年3月26日(星期四) 13:30-16:30",
     status: "full",
+    feedbackUrl: "#",
   },
 ];
 
@@ -94,23 +98,33 @@ const ActivitySection = () => {
                   日期：{a.date}
                 </p>
 
-                {a.status === "open" && a.formUrl ? (
+                <div className="flex gap-2">
+                  {a.status === "open" && a.formUrl ? (
+                    <a
+                      href={a.formUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 py-3 rounded-xl font-bold text-center bg-foreground text-background hover:bg-foreground/90 transition-colors"
+                    >
+                      立即報名
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="flex-1 py-3 rounded-xl font-bold bg-muted text-muted-foreground cursor-not-allowed"
+                    >
+                      活動額滿
+                    </button>
+                  )}
                   <a
-                    href={a.formUrl}
+                    href={a.feedbackUrl ?? "#"}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full py-3 rounded-xl font-bold text-center bg-foreground text-background hover:bg-foreground/90 transition-colors"
+                    className="flex-1 py-3 rounded-xl font-bold text-center border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
                   >
-                    立即報名
+                    回饋反映
                   </a>
-                ) : (
-                  <button
-                    disabled
-                    className="w-full py-3 rounded-xl font-bold bg-muted text-muted-foreground cursor-not-allowed"
-                  >
-                    活動額滿
-                  </button>
-                )}
+                </div>
               </div>
             </div>
           ))}
