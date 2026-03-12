@@ -7,9 +7,12 @@ const SiteFooter = () => {
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold text-xs">
-                竹
-              </div>
+              <img
+                src="/logo.png"
+                alt="新竹縣環境教育資訊網 Logo"
+                className="w-8 h-8 object-contain"
+                style={{ mixBlendMode: "multiply" }}
+              />
               <span className="font-bold text-primary">新竹縣環境教育資訊網</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
