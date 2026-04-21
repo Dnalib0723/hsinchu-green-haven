@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Leaf } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -30,6 +31,10 @@ const offices = [
 ];
 
 const GreenOfficeMap = () => {
+  const [selected, setSelected] = useState<number | null>(null);
+
+  const visibleOffices = selected !== null ? [offices[selected]] : offices;
+
   return (
     <section id="green-office">
       <div className="mb-8">
@@ -48,7 +53,7 @@ const GreenOfficeMap = () => {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {offices.map((o) => (
+            {visibleOffices.map((o) => (
               <Marker key={o.name} position={[o.lat, o.lng]}>
                 <Popup>
                   <div className="text-sm min-w-[180px]">
@@ -64,20 +69,30 @@ const GreenOfficeMap = () => {
 
         {/* 列表 */}
         <div className="space-y-2">
-          {offices.map((o) => (
-            <div
-              key={o.name}
-              className="bg-card rounded-xl px-4 py-4 border border-border hover:shadow-card-hover transition-all duration-300 flex items-center gap-3 group"
-            >
-              <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
-                <Leaf size={16} />
+          {offices.map((o, i) => {
+            const isSelected = selected === i;
+            return (
+              <div
+                key={o.name}
+                onClick={() => setSelected(isSelected ? null : i)}
+                className={`rounded-xl px-4 py-4 border transition-all duration-200 flex items-center gap-3 cursor-pointer ${
+                  isSelected
+                    ? "border-2 border-primary bg-primary/5 shadow-card-hover"
+                    : "bg-card border-border hover:shadow-card-hover"
+                }`}
+              >
+                <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                  isSelected ? "bg-primary text-primary-foreground" : "bg-muted text-primary"
+                }`}>
+                  <Leaf size={16} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="font-semibold text-foreground text-sm truncate">{o.name}</div>
+                  <div className="text-xs text-muted-foreground">{o.district}</div>
+                </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-semibold text-foreground text-sm truncate">{o.name}</div>
-                <div className="text-xs text-muted-foreground">{o.district}</div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

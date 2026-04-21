@@ -69,8 +69,10 @@ const allVenues = [
 
 export default function VenueMap() {
   const [active, setActive] = useState<Set<ThemeKey>>(new Set(themes.map((t) => t.key)));
+  const [selected, setSelected] = useState<number | null>(null);
 
   const toggle = (key: ThemeKey) => {
+    setSelected(null);
     setActive((prev) => {
       const next = new Set(prev);
       next.has(key) ? next.delete(key) : next.add(key);
@@ -78,7 +80,8 @@ export default function VenueMap() {
     });
   };
 
-  const visible = allVenues.filter((v) => active.has(v.theme));
+  const filtered = allVenues.filter((v) => active.has(v.theme));
+  const visible = selected !== null ? [filtered[selected]] : filtered;
 
   return (
     <section id="venues">
@@ -140,12 +143,19 @@ export default function VenueMap() {
 
         {/* 列表 */}
         <div className="space-y-2 overflow-y-auto max-h-[480px] pr-1">
-          {visible.map((v, i) => {
+          {filtered.map((v, i) => {
             const theme = themes.find((t) => t.key === v.theme)!;
+            const isSelected = selected === i;
             return (
               <div
                 key={i}
-                className="bg-card rounded-xl px-4 py-3 border border-border hover:shadow-card-hover transition-all duration-300 flex items-center gap-3 group"
+                onClick={() => setSelected(isSelected ? null : i)}
+                className={`rounded-xl px-4 py-3 border transition-all duration-200 flex items-center gap-3 cursor-pointer ${
+                  isSelected
+                    ? "border-2 bg-card shadow-card-hover"
+                    : "bg-card border-border hover:shadow-card-hover"
+                }`}
+                style={isSelected ? { borderColor: theme.color } : {}}
               >
                 <div
                   className="w-3 h-3 rounded-full shrink-0"
@@ -158,7 +168,7 @@ export default function VenueMap() {
               </div>
             );
           })}
-          {visible.length === 0 && (
+          {filtered.length === 0 && (
             <div className="text-center text-muted-foreground text-sm py-12">請選擇至少一個主題</div>
           )}
         </div>
