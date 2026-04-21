@@ -1,4 +1,4 @@
-import { FileText, Video, BookOpen, Download } from "lucide-react";
+import { FileText, Video, BookOpen } from "lucide-react";
 
 const resources = [
   {
@@ -56,10 +56,7 @@ const ResourceLibrary = () => {
             <span className="text-xs font-medium text-muted-foreground">{r.category}</span>
             <h3 className="text-base font-bold text-foreground mt-1 mb-2">{r.title}</h3>
             <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{r.desc}</p>
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-muted-foreground flex items-center gap-1">
-                <Download size={12} /> {r.downloads} 次下載
-              </span>
+            <div className="flex items-center justify-end">
               <button className="text-xs font-semibold text-primary hover:underline">
                 下載
               </button>

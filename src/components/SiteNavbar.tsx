@@ -3,11 +3,12 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "活動報名", href: "#activities" },
+  { label: "成果分享", href: "#showcase" },
   { label: "教材資源", href: "#resources" },
   { label: "場域地圖", href: "#venues" },
-  { label: "人才資源", href: "/talents" },
-  { label: "案例分享", href: "#cases" },
-  { label: "法規資訊", href: "#regulations" },
+  { label: "人才資源", href: "#volunteers" },
+  { label: "綠色辦公", href: "#green-office" },
+  { label: "法規資訊", href: "https://www.ema.gov.tw/information-service/laws-and-regulations/ema-laws/1775.html", external: true },
 ];
 
 const SiteNavbar = () => {
@@ -34,17 +35,12 @@ const SiteNavbar = () => {
             <a
               key={link.href}
               href={link.href}
+              {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               {link.label}
             </a>
           ))}
-          <a
-            href="#dashboard"
-            className="px-5 py-2 bg-primary text-primary-foreground rounded-full hover:bg-forest-dark transition-colors font-semibold text-sm"
-          >
-            管理後台
-          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -70,12 +66,6 @@ const SiteNavbar = () => {
               {link.label}
             </a>
           ))}
-          <a
-            href="#dashboard"
-            className="block mt-2 text-center px-5 py-2.5 bg-primary text-primary-foreground rounded-full font-semibold"
-          >
-            管理後台
-          </a>
         </div>
       )}
     </nav>
