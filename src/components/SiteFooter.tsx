@@ -18,7 +18,7 @@ const SiteFooter = () => {
             <p className="text-sm text-muted-foreground leading-relaxed">
               新竹縣環境保護局
               <br />
-              地址：302 新竹縣竹北市光明六路10號
+              地址：302099 新竹縣竹北市光明五街62號
               <br />
               電話：(03) 551-9345
             </p>
@@ -36,21 +36,27 @@ const SiteFooter = () => {
             <h4 className="font-bold text-foreground mb-4">關注我們</h4>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://www.facebook.com/hchcepb?locale=zh_TW"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-muted rounded-xl flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={18} />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/hcepb"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-muted rounded-xl flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram size={18} />
               </a>
               <a
-                href="#"
+                href="https://line.me/ti/p/@935gcwrn"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-muted rounded-xl flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
                 aria-label="LINE"
               >

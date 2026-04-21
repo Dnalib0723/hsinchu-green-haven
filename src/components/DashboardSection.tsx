@@ -1,19 +1,28 @@
 const stats = [
-  { value: "1,248", label: "本月報名人數" },
+  { value: "1,248", label: "活動報名人數" },
   { value: "56", label: "認證場域數" },
-  { value: "3,672", label: "教材下載數" },
-  { value: "412", label: "活躍志工人數" },
+  { value: "1,705", label: "活躍志工人數" },
 ];
 
-const bars = [
-  { label: "竹北", pct: 85 },
-  { label: "竹東", pct: 62 },
-  { label: "新豐", pct: 90 },
-  { label: "湖口", pct: 75 },
-  { label: "新埔", pct: 50 },
-  { label: "芎林", pct: 40 },
-  { label: "寶山", pct: 30 },
+const volunteerData = [
+  { label: "新豐鄉", count: 444 },
+  { label: "竹北市", count: 210 },
+  { label: "竹東鎮", count: 204 },
+  { label: "湖口鄉", count: 324 },
+  { label: "北埔鄉", count: 193 },
+  { label: "橫山鄉", count: 108 },
+  { label: "芎林鄉", count: 69 },
+  { label: "峨眉鄉", count: 68 },
+  { label: "新埔鎮", count: 60 },
+  { label: "關西鎮", count: 25 },
 ];
+
+const maxCount = Math.max(...volunteerData.map((d) => d.count));
+const bars = volunteerData.map((d) => ({
+  label: d.label,
+  count: d.count,
+  pct: Math.round((d.count / maxCount) * 100),
+}));
 
 const DashboardSection = () => {
   return (
@@ -44,7 +53,8 @@ const DashboardSection = () => {
         <div className="bg-primary-foreground/5 rounded-2xl p-6 border border-primary-foreground/10">
           <div className="flex items-end gap-3 h-44">
             {bars.map((b) => (
-              <div key={b.label} className="flex-1 flex flex-col items-center h-full justify-end">
+              <div key={b.label} className="flex-1 flex flex-col items-center h-full justify-end gap-1">
+                <span className="text-[9px] text-primary-foreground/50">{b.count}</span>
                 <div
                   className="w-full bg-forest-light rounded-t-md transition-all duration-700"
                   style={{ height: `${b.pct}%` }}
@@ -58,7 +68,7 @@ const DashboardSection = () => {
             ))}
           </div>
           <p className="text-center text-xs text-primary-foreground/40 mt-6">
-            各行政區人員參與度即時分析（示範資料）
+            各鄉鎮志工人數統計
           </p>
         </div>
       </div>

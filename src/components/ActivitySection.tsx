@@ -18,8 +18,7 @@ const activities: Activity[] = [
     title: "廢木變黃金:森林循環與資材重生",
     location: "木酢達人-REWOOD森林循環碳經濟創生有限公司",
     date: "2026年3月19日(星期四) 13:30-16:30",
-    status: "open",
-    formUrl: "https://forms.gle/1WTHrotRTBCn5aHX7",
+    status: "full",
     feedbackUrl: "#",
   },
   {
@@ -27,8 +26,7 @@ const activities: Activity[] = [
     title: "奇妙水旅程：水資源循環再生與環境保護",
     location: "竹北水資源回收中心",
     date: "2026年3月24日(星期二) 13:30-16:30",
-    status: "open",
-    formUrl: "https://forms.gle/x56jJGjBpBTbtumP9",
+    status: "full",
     feedbackUrl: "#",
   },
   {
