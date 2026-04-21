@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Users } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -51,6 +52,10 @@ const teams = [
 ];
 
 const VolunteerMap = () => {
+  const [selected, setSelected] = useState<number | null>(null);
+
+  const visibleTeams = selected !== null ? [teams[selected]] : teams;
+
   return (
     <section id="volunteers">
       <div className="mb-8">
@@ -69,7 +74,7 @@ const VolunteerMap = () => {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {teams.map((t) => (
+            {visibleTeams.map((t) => (
               <Marker key={t.no} position={[t.lat, t.lng]}>
                 <Popup>
                   <div className="text-sm min-w-[180px]">
@@ -86,23 +91,33 @@ const VolunteerMap = () => {
 
         {/* 列表 */}
         <div className="space-y-2 overflow-y-auto max-h-[480px] pr-1">
-          {teams.map((t) => (
-            <div
-              key={t.no}
-              className="bg-card rounded-xl px-4 py-3 border border-border hover:shadow-card-hover transition-all duration-300 flex items-center gap-3 group"
-            >
-              <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
-                <Users size={16} />
+          {teams.map((t, i) => {
+            const isSelected = selected === i;
+            return (
+              <div
+                key={t.no}
+                onClick={() => setSelected(isSelected ? null : i)}
+                className={`rounded-xl px-4 py-3 border transition-all duration-200 flex items-center gap-3 cursor-pointer ${
+                  isSelected
+                    ? "border-2 border-primary bg-primary/5 shadow-card-hover"
+                    : "bg-card border-border hover:shadow-card-hover"
+                }`}
+              >
+                <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                  isSelected ? "bg-primary text-primary-foreground" : "bg-muted text-primary"
+                }`}>
+                  <Users size={16} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="font-semibold text-foreground text-sm truncate">{t.name}</div>
+                  <div className="text-xs text-muted-foreground">{t.district}</div>
+                </div>
+                <span className="text-xs bg-muted text-muted-foreground px-2.5 py-1 rounded-full shrink-0">
+                  {t.count} 人
+                </span>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-semibold text-foreground text-sm truncate">{t.name}</div>
-                <div className="text-xs text-muted-foreground">{t.district}</div>
-              </div>
-              <span className="text-xs bg-muted text-muted-foreground px-2.5 py-1 rounded-full shrink-0">
-                {t.count} 人
-              </span>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
