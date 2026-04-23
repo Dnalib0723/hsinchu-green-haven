@@ -86,7 +86,7 @@ export default function VenueMap() {
   return (
     <section id="venues">
       <div className="mb-6">
-        <h2 className="text-3xl font-bold text-foreground">認證環教場域</h2>
+        <h2 className="text-3xl font-bold text-foreground">環教相關場域機構</h2>
         <p className="text-muted-foreground mt-1">探索新竹縣優質環境教育場所</p>
       </div>
 
