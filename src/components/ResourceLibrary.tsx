@@ -1,33 +1,11 @@
-import { FileText, Video, BookOpen } from "lucide-react";
+import { FileText } from "lucide-react";
 
 const resources = [
   {
     icon: FileText,
     category: "教案設計",
-    title: "水資源保育教案",
-    desc: "適用國小高年級，含學習單與評量表",
-    downloads: 342,
-  },
-  {
-    icon: Video,
-    category: "影音教材",
-    title: "新竹縣濕地生態紀錄片",
-    desc: "時長 25 分鐘，含導覽手冊",
-    downloads: 518,
-  },
-  {
-    icon: BookOpen,
-    category: "學習單",
-    title: "碳足跡計算工作坊手冊",
-    desc: "互動式學習，適用企業 ESG 培訓",
-    downloads: 189,
-  },
-  {
-    icon: FileText,
-    category: "教案設計",
-    title: "在地植物辨識圖鑑",
-    desc: "收錄新竹縣 120 種常見植物",
-    downloads: 276,
+    title: "六家國小示範教材",
+    link: "https://drive.google.com/uc?export=download&id=1ANkvj6v2HKRnNj4uCBUsRWJzETu9pJBi",
   },
 ];
 
@@ -55,11 +33,15 @@ const ResourceLibrary = () => {
             </div>
             <span className="text-xs font-medium text-muted-foreground">{r.category}</span>
             <h3 className="text-base font-bold text-foreground mt-1 mb-2">{r.title}</h3>
-            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{r.desc}</p>
             <div className="flex items-center justify-end">
-              <button className="text-xs font-semibold text-primary hover:underline">
+              <a
+                href={r.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-semibold text-primary hover:underline"
+              >
                 下載
-              </button>
+              </a>
             </div>
           </div>
         ))}
