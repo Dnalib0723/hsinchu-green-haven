@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Force)",
+      "PowerShell(cd \"c:\\\\Users\\\\USER\\\\Desktop\\\\柏新20260304\\\\美質環境資訊網\\\\hsinchu-green-haven\\\\hsinchu-green-haven\"; dir src -Recurse -Force | Where-Object { $_.PSIsContainer -or $_.Name -match '\\\\.\\(tsx?|jsx?\\)$' } | Select-Object FullName | head -50)",
+      "Read(//c/Users/USER/Desktop/�f�s20260304/�������Ҹ�T��/hsinchu-green-haven/**)"
+    ]
+  }
+}
