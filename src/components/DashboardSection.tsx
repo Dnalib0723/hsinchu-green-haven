@@ -1,6 +1,6 @@
 const stats = [
   { value: "1,248", label: "活動報名人數" },
-  { value: "56", label: "認證場域數" },
+  { value: "266", label: "場域數" },
   { value: "1,705", label: "活躍志工人數" },
 ];
 
