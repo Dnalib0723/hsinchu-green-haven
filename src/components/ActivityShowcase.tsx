@@ -1,9 +1,9 @@
 const videos = [
-  { id: "6SG_wwqspUw", title: "活動成果紀錄 1" },
-  { id: "Qo0aOTGBjZg", title: "活動成果紀錄 2" },
-  { id: "3czCfYlmp04", title: "活動成果紀錄 3" },
-  { id: "8c8u64x7OCY", title: "活動成果紀錄 4" },
-  { id: "mDrhPffr1qs", title: "活動成果紀錄 5" },
+  { id: "6SG_wwqspUw", title: "活動成果紀錄 1", poster: "/posters/poster-1.jpg" },
+  { id: "Qo0aOTGBjZg", title: "活動成果紀錄 2", poster: "/posters/poster-2.jpg" },
+  { id: "3czCfYlmp04", title: "活動成果紀錄 3", poster: "/posters/poster-3.jpg" },
+  { id: "8c8u64x7OCY", title: "活動成果紀錄 4", poster: "/posters/poster-4.jpg" },
+  { id: "mDrhPffr1qs", title: "活動成果紀錄 5", poster: "/posters/poster-5.jpg" },
 ];
 
 const ActivityShowcase = () => {
@@ -34,6 +34,7 @@ const ActivityShowcase = () => {
                 loading="lazy"
               />
             </div>
+            <img src={v.poster} alt={v.title} className="w-full object-cover" loading="lazy" />
           </div>
         ))}
         <div
@@ -50,6 +51,7 @@ const ActivityShowcase = () => {
               loading="lazy"
             />
           </div>
+          <img src={videos[3].poster} alt={videos[3].title} className="w-full object-cover" loading="lazy" />
         </div>
         <div
           className="col-span-6 sm:col-span-2 rounded-2xl overflow-hidden border border-border shadow-sm animate-fade-up"
@@ -65,6 +67,7 @@ const ActivityShowcase = () => {
               loading="lazy"
             />
           </div>
+          <img src={videos[4].poster} alt={videos[4].title} className="w-full object-cover" loading="lazy" />
         </div>
       </div>
     </section>
