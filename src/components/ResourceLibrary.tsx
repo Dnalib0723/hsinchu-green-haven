@@ -1,4 +1,4 @@
-import { FileText } from "lucide-react";
+import { FileText, BookOpen } from "lucide-react";
 
 const resources = [
   {
@@ -6,6 +6,48 @@ const resources = [
     category: "教案設計",
     title: "六家國小示範教材",
     link: "https://drive.google.com/uc?export=download&id=1ANkvj6v2HKRnNj4uCBUsRWJzETu9pJBi",
+  },
+  {
+    icon: FileText,
+    category: "教案設計",
+    title: "食來不易，惜福食光－114年惜食就賽教案組第一名",
+    link: "https://drive.google.com/uc?export=download&id=1wuK7B1oHiLrbBFGA5Y5uuNNhtBfUkIcQ",
+  },
+  {
+    icon: FileText,
+    category: "教案設計",
+    title: "惜食超人隊－114年惜食就賽教案組第二名",
+    link: "https://drive.google.com/uc?export=download&id=1yv24WAZ97Fskh1_yms1EyVFiaXx2WZvj",
+  },
+  {
+    icon: FileText,
+    category: "教案設計",
+    title: "惜食x在地x香菇煎餅－114年惜食就賽教案組第三名",
+    link: "https://drive.google.com/uc?export=download&id=1ZB2opK3t641bhqyNSk93jwXwWVW6HHwc",
+  },
+  {
+    icon: BookOpen,
+    category: "繪本創作",
+    title: "暖暖－113年度新竹縣環境教育繪本冠軍",
+    link: "https://drive.google.com/uc?export=download&id=14x4-2TWVzHp-H-tPwkJ6_moot07KflX9",
+  },
+  {
+    icon: BookOpen,
+    category: "繪本創作",
+    title: "垃圾去哪裡－113年度新竹縣環境教育繪本亞軍",
+    link: "https://drive.google.com/uc?export=download&id=1z-VCar-7c7ejH11j1fq7jPJ9ntxH5j0b",
+  },
+  {
+    icon: BookOpen,
+    category: "繪本創作",
+    title: "100億隻兔子－113年度新竹縣環境教育繪本季軍",
+    link: "https://drive.google.com/uc?export=download&id=1dPgyN3_Z9VItffunOgL_75mEHQhspq6M",
+  },
+  {
+    icon: BookOpen,
+    category: "繪本創作",
+    title: "籽籽與花花－113年度新竹縣環境教育繪本優勝",
+    link: "https://drive.google.com/uc?export=download&id=1N7YK1RgSDdxNPWS829TnxaiujlpKan4x",
   },
 ];
 
