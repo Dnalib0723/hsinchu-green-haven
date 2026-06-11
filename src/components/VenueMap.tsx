@@ -5,7 +5,7 @@ import L from "leaflet";
 
 const themes = [
   { key: "環教場域",   label: "環教場域",       color: "#16a34a", bg: "bg-green-600",   border: "border-green-600",   text: "text-green-600",   iconUrl: "/icons/環教場域icon.png" },
-  { key: "綠色餐廳",   label: "綠色餐廳綠時飯桌", color: "#ca8a04", bg: "bg-yellow-600",  border: "border-yellow-600",  text: "text-yellow-600",  iconUrl: "/icons/綠色餐廳icon.png" },
+  { key: "綠色餐廳",   label: "綠色餐廳綠食飯桌", color: "#ca8a04", bg: "bg-yellow-600",  border: "border-yellow-600",  text: "text-yellow-600",  iconUrl: "/icons/綠色餐廳icon.png" },
   { key: "環保旅館",   label: "環保旅館",       color: "#2563eb", bg: "bg-blue-600",    border: "border-blue-600",    text: "text-blue-600",    iconUrl: "/icons/環保旅館icon.png" },
   { key: "環保小學堂", label: "環保小學堂",     color: "#9333ea", bg: "bg-purple-600",  border: "border-purple-600",  text: "text-purple-600",  iconUrl: "/icons/環保小學堂icon.png" },
   { key: "台美生態認證", label: "台美生態認證", color: "#dc2626", bg: "bg-red-600",     border: "border-red-600",     text: "text-red-600",     iconUrl: "/icons/台美生態認證icon.png" },
